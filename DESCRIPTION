@@ -12,3 +12,4 @@ Depends:
     R (>= 3.5.0)
 Suggests: 
     testthat (>= 2.3.2)
+RoxygenNote: 7.1.0
