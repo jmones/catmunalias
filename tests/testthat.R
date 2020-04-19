@@ -1,4 +1,4 @@
 library(testthat)
-library(catalanmunicipalities)
+library(catmunalias)
 
-test_check("catalanmunicipalities")
+test_check("catmunalias")
