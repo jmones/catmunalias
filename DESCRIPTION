@@ -1,6 +1,6 @@
 Package: catmunalias
 Type: Package
-Title: Provides a dataset for aliases of Catalan municipalities
+Title: Provides a Dataset for Aliases of Catalan Municipalities
 Version: 0.1.0
 Authors@R: c(person('Josep', 'Monés', email = 'jmones@gmail.com', role = c('cre', 'aut')))
 Description: More about what it does (maybe more than one line)
