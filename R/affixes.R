@@ -8,15 +8,15 @@ library(tidyverse)
 #' @param compare_function Function to use in comparison
 #' @return A vector indexes of the same length of words, with positions in from. NA if none matched for that word.
 matchFirst <- function(words, from, compare_function) {
-  indices <- lst(words, from)                                     %>%
-    cross()                                                       %>%
-    map(~ compare_function(.$words, .$from))                      %>%
-    as.logical()                                                  %>%
-    matrix(nrow=length(words), ncol=length(from))                 %>%
-    apply(1, function(r) which.max(if_else(r==FALSE, NA, T)))     %>%
+  indices <- lst(words, from) %>%
+    cross() %>%
+    map(~ compare_function(.$words, .$from)) %>%
+    as.logical() %>%
+    matrix(nrow = length(words), ncol = length(from)) %>%
+    apply(1, function(r) which.max(if_else(r == FALSE, NA, T))) %>%
     as.integer()
 
-  return (indices)
+  return(indices)
 }
 
 fromSuffixToPrefix <- function(words, suffixes, prefixes) {
@@ -24,10 +24,10 @@ fromSuffixToPrefix <- function(words, suffixes, prefixes) {
   result <- map2(
     words,
     indices,
-    ~ if(is.na(.y)) {
+    ~ if (is.na(.y)) {
       .x
     } else {
-      paste0(prefixes[.y], substr(.x, 1, nchar(.x)-nchar(suffixes[.y])))
+      paste0(prefixes[.y], substr(.x, 1, nchar(.x) - nchar(suffixes[.y])))
     }
   )
   return(simplify(result))
@@ -38,12 +38,11 @@ fromPrefixToSuffix <- function(words, prefixes, suffixes) {
   result <- map2(
     words,
     indices,
-    ~ if(is.na(.y)) {
+    ~ if (is.na(.y)) {
       .x
     } else {
-      paste0(substr(.x, nchar(prefixes[.y])+1, nchar(.x)), suffixes[.y])
+      paste0(substr(.x, nchar(prefixes[.y]) + 1, nchar(.x)), suffixes[.y])
     }
   )
   return(simplify(result))
 }
-

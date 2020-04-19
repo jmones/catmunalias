@@ -16,18 +16,20 @@ createAliasFromEmex <- function(catmunemex) {
   alias_cs <- fromPrefixToSuffix(mun, prefix_capitalised, suffix_capitalised)
   alias_lp <- fromSuffixToPrefix(alias_ls, suffix_lowercase, prefix_lowercase)
 
-  catmunalias <- tibble(alias=c(alias_cp, alias_cs, alias_lp, alias_ls),
-                        mun=c(mun, mun, mun, mun)) %>%
-                 distinct() %>%
-                 arrange(alias)
-    return(catmunalias)
+  catmunalias <- tibble(
+    alias = c(alias_cp, alias_cs, alias_lp, alias_ls),
+    mun = c(mun, mun, mun, mun)
+  ) %>%
+    distinct() %>%
+    arrange(alias)
+  return(catmunalias)
 }
 
 appendAliasesFromWikipedia <- function(catmunaliasfromemex) {
   catmunaliasfromemexandwp <- catmunaliasfromemex %>%
-    add_row(alias="Campmany", mun="Capmany") %>%
-    add_row(alias="Campmany", mun="Capmany") %>%
-    add_row(alias="Navars", mun="Navàs")
+    add_row(alias = "Campmany", mun = "Capmany") %>%
+    add_row(alias = "Campmany", mun = "Capmany") %>%
+    add_row(alias = "Navars", mun = "Navàs")
 }
 
 plan <- drake_plan(
@@ -35,8 +37,7 @@ plan <- drake_plan(
   catmunwp = readRDS(file_in("data-raw/catmunwp.Rds")),
   catmunaliasfromemex = createAliasFromEmex(catmunemex),
   catmunalias = catmunaliasfromemex,
-  catmunalias_save_data = save(catmunalias, version=3, file=file_out("data/catmunalias.rda"))
+  catmunalias_save_data = save(catmunalias, version = 3, file = file_out("data/catmunalias.rda"))
 )
 
 make(plan)
-
