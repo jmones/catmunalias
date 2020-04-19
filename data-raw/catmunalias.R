@@ -35,7 +35,7 @@ plan <- drake_plan(
   catmunwp = readRDS(file_in("data-raw/catmunwp.Rds")),
   catmunaliasfromemex = createAliasFromEmex(catmunemex),
   catmunalias = catmunaliasfromemex,
-  catmunalias_save_data = save(catmunalias, file=file_out("data/catmunalias.rda"))
+  catmunalias_save_data = save(catmunalias, version=3, file=file_out("data/catmunalias.rda"))
 )
 
 make(plan)
