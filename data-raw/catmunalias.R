@@ -7,8 +7,6 @@ library(rvest)
 
 source("R/affixes.R")
 source("R/articles.R")
-load("data/catmunemex.rda")
-load("data/catmunwp.rda")
 
 createAliasFromEmex <- function(catmunemex) {
   mun <- fromSuffixToPrefix(catmunemex$mun, suffix_lowercase, prefix_capitalised)
@@ -33,14 +31,12 @@ appendAliasesFromWikipedia <- function(catmunaliasfromemex) {
 }
 
 plan <- drake_plan(
+  catmunemex = readRDS(file_in("data-raw/catmunemex.Rds")),
+  catmunwp = readRDS(file_in("data-raw/catmunwp.Rds")),
   catmunaliasfromemex = createAliasFromEmex(catmunemex),
   catmunalias = catmunaliasfromemex,
-  catmunaliasfromemex_save_data = usethis::use_data(catmunalias, overwrite = TRUE)
-
-#  catmunwp_raw = read_html(url) %>% html_node("table.wikitable") %>% html_table(),
-#  catmunalias = prepare(catmunalias_raw),
-#  catmunalias_save_data = usethis::use_data(catmunalias, overwrite = TRUE)
+  catmunalias_save_data = save(catmunalias, file=file_out("data/catmunalias.rda"))
 )
 
 make(plan)
-loadd(catmunalias)
+

@@ -16,7 +16,7 @@ parse <- function(xml_text) {
 plan <- drake_plan(
   catmunemex_xml_text = content(RETRY("GET", url), "text"),
   catmunemex = parse(catmunemex_xml_text),
-  catmunemex_save_data = usethis::use_data(catmunemex, overwrite = TRUE)
+  catmunemex_save_data_raw = saveRDS(catmunemex, file=file_out("data-raw/catmunemex.Rds"))
 )
 
 make(plan)
