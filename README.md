@@ -1,5 +1,7 @@
 # catmunalias
 
+![R-CMD-check](https://github.com/jmones/catmunalias/workflows/R-CMD-check/badge.svg?branch=master)
+
 Dataset that provides a mapping of aliases of Catalan municipalities, as found in different databases. This is useful to merge different datasets by municipality.
 
 ## Current datasets
