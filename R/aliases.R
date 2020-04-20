@@ -1,16 +1,16 @@
 library(tidyverse)
 
-getReferencesNotMapped <- function(x, xp, yp) {
+get_unmapped_refs <- function(x, xp, yp) {
   yfound <- yp[which(xp %in% x)]
   ypp <- setdiff(yp, yfound)
   return(ypp)
 }
 
-getAliasesWithNoMapping <- function(x, xp) {
+get_unmapped_aliases <- function(x, xp) {
   return(setdiff(x, xp))
 }
 
-checkInjectiveMapping <- function(x, xp, yp) {
+check_injective_mapping <- function(x, xp, yp) {
   xpp <- getAliasesWithNoMapping(x, xp)
   ypp <- getReferencesNotMapped(x, xp, yp)
   if (length(xpp) > 0) {

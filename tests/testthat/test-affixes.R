@@ -1,33 +1,33 @@
 library(tidyverse)
 
-test_that("matchFirst() detects the first match in from or returns Inf", {
+test_that("match_first() detects the first match in from or returns Inf", {
   words <- c("1aa", "1bb", "1ca", "1dd")
   from <- c("aa", "a", "b")
   expected <- c(1, 3, 2, NA)
 
-  result <- matchFirst(words, from, endsWith)
+  result <- match_first(words, from, endsWith)
 
   expect_equal(result, expected)
 })
 
-test_that("fromSuffixToPrefix() changes from suffix to prefix when matching or leaves untouched if not", {
+test_that("from_suffix_to_prefix() transforms if matches or leaves as it is", {
   words <- c("1aa", "1bb", "1ca", "untouched")
   suffix <- c("aa", "a", "b")
   prefix <- c("AA", "A", "B")
-  expected <- c("AA1", "B1b", "A1c", "untouched")
+  expected <- list("AA1", "B1b", "A1c", "untouched")
 
-  result <- fromSuffixToPrefix(words, suffix, prefix)
+  result <- from_suffix_to_prefix(words, suffix, prefix)
 
   expect_equal(result, expected)
 })
 
-test_that("fromPrefixToSuffix() changes from prefix to suffix when matching or leaves untouched if not", {
+test_that("from_prefix_to_suffix() transforms if matches or leaves as it is", {
   words <- c("AA1", "B1b", "A1c", "untouched")
   prefix <- c("AA", "A", "B")
   suffix <- c("aa", "a", "b")
-  expected <- c("1aa", "1bb", "1ca", "untouched")
+  expected <- list("1aa", "1bb", "1ca", "untouched")
 
-  result <- fromPrefixToSuffix(words, prefix, suffix)
+  result <- from_prefix_to_suffix(words, prefix, suffix)
 
   expect_equal(result, expected)
 })
