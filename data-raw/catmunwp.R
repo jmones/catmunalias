@@ -1,4 +1,7 @@
-## code to prepare `catmunwp` dataset goes here
+# List of municipalities in Wikipedia
+# Retrieved from https://ca.wikipedia.org/wiki/Llista_de_municipis_de_Catalunya
+# License VP:CC-BY-SA https://ca.wikipedia.org/wiki/Viquip%C3%A8dia:Text_de_la_llic%C3%A8ncia_de_Creative_Commons_Reconeixement-Compartir_Igual_3.0_No_adaptada
+
 
 library(drake)
 library(dplyr)

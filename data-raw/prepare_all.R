@@ -3,4 +3,6 @@
 
 source("data-raw/catmunemex.R")
 source("data-raw/catmunwp.R")
+
+# should always go after individual DB preparation
 source("data-raw/catmunalias.R")

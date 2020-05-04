@@ -1,4 +1,5 @@
-## code to prepare `catmunalias` dataset goes here
+# Creates databases of aliases of Catatalan municipalies
+# Uses catamunwp and catmuneemex
 
 library(drake)
 library(dplyr)

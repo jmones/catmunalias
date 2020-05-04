@@ -1,4 +1,7 @@
-## code to prepare `catmunemex` dataset goes here
+# Catalan municipalities from EMEX database
+#
+# Retrieved from https://www.idescat.cat/dev/api/emex/
+# License https://www.idescat.cat/dev/api/#cdu
 
 library(httr)
 library(xml2)
