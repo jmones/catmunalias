@@ -30,8 +30,8 @@ get_unmapped_aliases <- function(x, xp) {
 #' @param yp target set in reference data
 #' @return no value. Stops if failing.
 check_injective_mapping <- function(x, xp, yp) {
-  xpp <- getAliasesWithNoMapping(x, xp)
-  ypp <- getReferencesNotMapped(x, xp, yp)
+  xpp <- get_unmapped_aliases(x, xp)
+  ypp <- get_unmapped_refs(x, xp, yp)
   if (length(xpp) > 0) {
     stop(
       "Some aliases have no mapping.",
