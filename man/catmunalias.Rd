@@ -3,14 +3,26 @@
 \docType{data}
 \name{catmunalias}
 \alias{catmunalias}
-\title{Dataset}
+\title{Catalan municipality names}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1340 rows and 2 columns.
+Data frame with columns
+\describe{
+\item{alias}{Nome used for a municipality}
+\item{mun}{Cannonical name for the municipality}
+}
+}
+\source{
+<https://www.idescat.cat/dev/api/emex/>
+
+<https://ca.wikipedia.org/wiki/Llista_de_municipis_de_Catalunya>
 }
 \usage{
 catmunalias
 }
 \description{
-Dataset
+DB of different ways of refering to catalan municipalities.
+}
+\examples{
+  catmunalias
 }
 \keyword{datasets}
